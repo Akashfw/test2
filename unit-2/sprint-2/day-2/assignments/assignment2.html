@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex assignment-2</title>
+    <style>
+        .top{
+            text-align: center;
+            height: auto;
+            border: 1px solid white;
+            background-color: 	#ecf9f9;
+            width: 100%;
+            
+        }
+        .top>div{
+            display: flex;
+            width: 80%;
+            margin: auto;
+            justify-content: space-between;
+        }
+        .top>div>div{
+            height: 350px;
+            width: 300px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            background-color: white;
+            text-align: left;
+            padding: 0px 20px;
+        }
+        .top>div>div>p:nth-child(2){
+            color: blue;
+        }
+        .top>button{
+            color: red;
+            margin: 20px;
+            border-radius: 5px;
+            border: 1px solid silver;
+        }
+        .bottom{
+            text-align: center;
+            width: 100%;
+        }
+        .bottom>div{
+            display: flex;
+            width: 90%;
+            height: 50%;
+            border: 1px solid white;
+            margin: auto;
+            justify-content: space-between;
+
+        }
+        .bottom>div>div{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 30%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="top">
+        <h1>Masai in The News</h1>
+        <div>
+            <div>
+                <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/ET_3754cc10ec.png" alt="img" width="100%">
+                <p>21 Oct 2022</p>
+                <p> <b>Ipsum dolor sit amet consectetur, adipisicing elit. Saepe, consequuntur. Lorem ipsum dolor sit amet.</b></p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, molestiae.</p>
+            </div>
+            <div><img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/money_Control_c3e25f5ceb.png" alt="img" width="100%">
+                <p>21 Oct 2022</p>
+                <p> <b>Ipsum dolor sit amet consectetur, adipisicing elit. Saepe, consequuntur. Lorem ipsum dolor sit amet.</b></p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, molestiae.</p></div>
+            <div><img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/vccircle_6ef779c958.png" alt="img" width="100%">
+                <p>21 Oct 2022</p>
+                <p> <b>Ipsum dolor sit amet consectetur, adipisicing elit. Saepe, consequuntur. Lorem ipsum dolor sit amet.</b></p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, molestiae.</p></div>
+        </div>
+        <button> SEE MORE > </button>
+    </div>
+    <div class="bottom">
+        <h1>Our Investors,Who Belive In Us</h1>
+        <div>
+            <div>
+                <img src="https://www.masaischool.com/img/our-investors/unitus.svg" alt="" width="100%">
+            </div>
+            <div>
+                <img src="https://www.masaischool.com/img/our-investors/omidyar.svg" alt="" width="100%">
+            </div>
+            <div>
+                <img src="https://www.masaischool.com/img/our-investors/indiaQuotient.svg" alt="" width="100%">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

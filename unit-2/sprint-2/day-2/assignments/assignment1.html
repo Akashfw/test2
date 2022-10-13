@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex assignment-1</title>
+    <style>
+         .nav{
+            height: 50px;
+            align-items: center;
+            display: flex;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            justify-content: space-between;
+            padding: 0px 30px;
+            margin: auto;
+         }
+         .nav>div{
+            display: flex;
+            width: 500px;
+            justify-content: space-between;
+            margin-left: 100px;
+         }
+         .nav>h1{
+            background-color: blue;
+            color: white;
+         }
+         .nav>div>h3:nth-child(1){
+            color: blue;
+         }
+         .main{
+            width: 90%;
+            height: 500px;
+            border: 1px solid white;
+            margin: 50px 100px 0px 20px;
+            display: flex;
+         }
+         .left{
+              width: 60%;
+              height: 100%;
+              border: 1px solid white;
+         }
+         .left>div{
+            height: auto;
+            width: 100%;
+            border: 1px solid white;
+         }
+         .left>div{
+            display: flex;
+            font-size: 25px;
+         }
+         .left>div>p{
+            margin-left: 30px;
+         }
+         .left>p:nth-child(1){
+            color: blue;
+            font-size: 12px;
+         }
+         .right{
+              width: 40%;
+              height: 100%;
+              border: 1px solid white;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-evenly;
+              align-content: space-around;
+         }
+         .right>div{
+            width: 40%;
+            height: 45%;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            padding: 0px 10px;
+         }
+         .right>div>h3{
+            margin-top: 0px;
+         }
+
+    </style>
+</head>
+<body>
+    <div class="nav" >
+        <h1>StudyLab</h1>
+        <div>
+            <h3>Home</h3>
+            <h3>About</h3>
+            <h3>Course</h3>
+            <h3>Instructor</h3>
+            <h3>Blog</h3>
+            <h3>Contact</h3>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="left">
+            <p>WELCOME TO STUDYLAB</p>
+            <H1>We Are StudyLab An Online <br> Learning Center</H1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime hic quia necessitatibus vel animi cupiditate suscipit quas, exercitationem quis earum neque perferendis incidunt enim expedita dolorum a tenetur in, ex ullam aliquam! Nesciunt aut, nisi natus rerum earum maiores ipsa ex sequi perspiciatis expedita aspernatur ipsam eum exercitationem nihil, quos, dolores eius? Illum doloremque ipsam vitae rem aut adipisci quia</p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloribus minus neque quibusdam non odit consectetur atque distinctio illo placeat suscipit excepturi est repudiandae, architecto quam inventore quidem repellendus ipsum temporibus aliquam ducimus, harum dicta quisquam fugit. Fugiat deleniti facere consequatur, cumque numquam ex voluptas nam hic, suscipit doloribus eos!</p>
+            <div>
+                <img src="https://www.thoughtco.com/thmb/3WPZLPdfyAITj4wcdVzhgg52RyY=/395x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-468962621-5ae3790a0e23d90039a9dd3b.jpg" alt="" width="35%">
+                <p>Learn anything from StudyLab, <br> Watch video </p>
+            </div>
+        </div>
+
+        <div class="right">
+                <div>
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/003/345/403/small/education-logo-template-design-icon-illustration-vector.jpg" alt="img" width="35%">
+                    <h3>Top Quality Content</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, rerum.</p>
+                </div>
+                <div>
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/003/345/403/small/education-logo-template-design-icon-illustration-vector.jpg" alt="img" width="35%">
+                    <h3>Highly Skilled Instructor</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, rerum.</p>
+                </div>
+                <div>
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/003/345/403/small/education-logo-template-design-icon-illustration-vector.jpg" alt="img" width="35%">
+                    <h3>World Class & Quiz</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, rerum.</p>
+                </div>
+                <div>
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/003/345/403/small/education-logo-template-design-icon-illustration-vector.jpg" alt="img" width="35%">
+                    <h3>Get Certified</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, rerum.</p>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
