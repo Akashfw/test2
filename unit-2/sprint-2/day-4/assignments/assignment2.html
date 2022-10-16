@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st-assignment</title>
+    <style>
+        .main{
+            display: grid;
+            grid-template-areas: 
+            "nav nav nav"
+            "lbox lbox rbox1"
+            "lbox lbox rbox2"
+            "lbox lbox rbox3"
+            ;
+            gap: 20px;
+        }
+        .main>div:nth-child(1){
+            background-color: yellow;
+            height: 50px;
+            grid-area: nav;
+        }
+        .main>div:nth-child(2){
+            background-color: red;
+            height: 350px;
+            grid-area:lbox;
+        }
+        .main>div:nth-child(3){
+            background-color: green;
+            height: 100px;
+            grid-area: rbox1;
+        }
+        .main>div:nth-child(4){
+            background-color: green;
+            height: 100px;
+            grid-area: rbox2;
+        }
+        .main>div:nth-child(5){
+            background-color: green;
+            height: 100px;
+            grid-area: rbox3;
+        }
+        @media all and (min-width:1px) and (max-width:650px) {
+            .main{
+                grid-template-areas: 
+            "nav nav nav"
+            "lbox lbox lbox"
+            "rbox1 rbox2 rbox3"
+            ;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+</body>
+</html>
