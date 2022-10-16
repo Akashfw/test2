@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid assignment</title>
+    <style>
+       .outer{
+        background-color: aqua;
+        height: 500px;
+        padding:50px 50px 100px 50px ;
+        text-align: center;
+        align-items: center;
+       }
+       .main{
+        width: 80%;
+        height: 300px;
+        background-color: black;
+        margin: auto;
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: repeat(12,1fr);
+        grid-template-rows: repeat(5,1fr);
+        gap: 10px;
+        padding: 10px;
+       }
+       .main>div{
+        background-color: rgb(59, 57, 57);
+        font-size: 30px;
+        color: aqua;
+        border-radius: 5px;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 0px;
+       }
+       #enter{
+        grid-column-start: 11;
+        grid-column-end: 13;
+       }
+       #shift{
+        grid-column-start: 11;
+        grid-column-end: 13;
+       }
+       #space{
+        grid-column-start: 5;
+        grid-column-end: 9;
+       }
+
+    </style>
+</head>
+<body>
+    
+<div class="outer">
+    <h1>Keybord</h1>
+    <div class="main">
+       <div>~</div>
+       <div>1</div>
+       <div>2</div>
+       <div>3</div>
+       <div>4</div>
+       <div>5</div>
+       <div>6</div>
+       <div>7</div>
+       <div>8</div>
+       <div>9</div>
+       <div>0</div>
+       <div>delete</div>
+       <div>Tab</div>
+       <div>Q</div>
+       <div>W</div>
+       <div>E</div>
+       <div>R</div>
+       <div>T</div>
+       <div>Y</div>
+       <div>U</div>
+       <div>I</div>
+       <div>O</div>
+       <div>P</div>
+       <div>\</div>
+       <div>Caps</div>
+       <div>A</div>
+       <div>S</div>
+       <div>D</div>
+       <div>F</div>
+       <div>G</div>
+       <div>H</div>
+       <div>J</div>
+       <div>K</div>
+       <div>L</div>
+       <div id="enter">Enter</div>
+       <div>Shift</div>
+       <div>Z</div>
+       <div>X</div>
+       <div>C</div>
+       <div>V</div>
+       <div>B</div>
+       <div>N</div>
+       <div>M</div>
+       <div><</div>
+       <div>></div>
+       <div id="shift">Shift</div>
+       <div>Windows</div>
+       <div>ctrl</div>
+       <div>Option</div>
+       <div>Alt</div>
+       <div id="space">Space</div>
+       <div>Alt</div>
+       <div>optionl</div>
+       <div>left arrow</div>
+       <div>right arrow</div>
+    </div>
+</div>
+</body>
+</html>

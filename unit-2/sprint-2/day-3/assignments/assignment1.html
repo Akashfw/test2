@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid-area1</title>
+    <style>
+
+       .main{
+        display: grid;
+        grid-template-columns: repeat(2,300px);
+        grid-template-rows: repeat(3,80px);
+        gap: 10px;
+        padding: 20px;
+        grid-template-areas: 
+        "one two"
+        "three four"
+        "five five";
+        font-size: 30px;
+        color: white;
+        margin: auto;
+       }
+       .main>div:nth-child(1){
+        background-color: rgb(80, 78, 78);
+        grid-area: one;
+        border-radius: 10px;
+       }
+       .main>div:nth-child(2){
+        background-color: rgb(80, 78, 78);
+        grid-area: two;
+        border-radius: 10px;
+       }
+       .main>div:nth-child(3){
+        background-color: rgb(80, 78, 78);
+        grid-area: three;
+        border-radius: 10px;
+       }
+       .main>div:nth-child(4){
+        background-color:rgb(80, 78, 78);
+        grid-area: four;
+        border-radius: 10px;
+       }
+       .main>div:nth-child(5){
+        background-color: rgb(80, 78, 78);
+        grid-area: five;
+        border-radius: 10px;
+       }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+       <div>A</div>
+       <div>B</div>
+       <div>C</div>
+       <div>D</div>
+       <div>E</div>
+
+    </div>
+</body>
+</html>
