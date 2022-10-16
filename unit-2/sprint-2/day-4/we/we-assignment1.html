@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>we-media-queries</title>
+    <style>
+         .main{
+            display: grid;
+            gap: 10px;
+             grid-template-areas: 
+             "y y y y"
+             "r g b gr"
+             ;
+         }
+         .main>div:nth-child(1){
+            background-color: yellow;
+            grid-area: y;
+            height: 40px;
+         }
+         .main>div:nth-child(2){
+            background-color: red;
+            grid-area: "r";
+         }
+         .main>div:nth-child(3){
+            background-color: green;
+            grid-area: "g";
+         }
+         .main>div:nth-child(4){
+            background-color: blue;
+            grid-area: "b";
+         }
+         .main>div:nth-child(5){
+            background-color: gray;
+            grid-area: "gr";
+         }
+         .main>div:nth-child(1) ~ div{
+            height: 100px;
+         }
+
+         @media all and (min-width:650px) and (max-width:1024px) {
+            .main{
+              grid-template-areas: 
+                "y y"
+                "r g"
+                "b gr"
+                ;
+            }
+         }
+         @media all and (min-width:300px) and (max-width:619px) {
+                .main {
+                    grid-template-areas: 
+                    "y"
+                    "r"
+                    "g"
+                    "b"
+                    "gr"
+                    ;
+                }
+            }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div>Navbar</div>
+        <div>Box-1</div>
+        <div>Box-2</div>
+        <div>Box-3</div>
+        <div>Box-4</div>
+    </div>
+</body>
+</html>
