@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web-111 C1 Evaluation</title>
+
+  <style>
+    body {
+      background-color: rgb(250, 250, 250);
+    }
+    .container{
+      margin: auto;
+    }
+    .top{
+      display: flex;
+      justify-content: space-evenly;
+      margin: auto;
+    }
+    .top>div:nth-child(1){
+         text-align: left;
+         padding-top: 120px;
+    }
+    .top>div:nth-child(1)>button{
+      background-color: green;
+      color: white;
+      border: 1px solid white;
+    }
+    .top>div:nth-child(2){
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: repeat(3,1fr);
+      gap: 20px;
+       width: 35%;
+    }
+    .top>div:nth-child(2)>div{
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 10px;
+      padding-left: 10px;
+      width: 200px;
+      height: 120px;
+      padding-top: 10px;
+
+    }
+
+    .mid>div{
+      display: flex;
+    }
+    .mid{
+      text-align: center;
+    }
+    .mid>div>div{
+      width: 30%;
+      margin: auto;
+    }
+
+    .bottom{
+      text-align: center;
+      background-color: aliceblue;
+    }
+    .bottom>div{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      grid-template-rows: repeat(2,1fr);
+      gap: 10px;
+      width: 70%;
+      margin: auto;
+    }
+    .bottom>button{
+      font-size: 20px;
+      color: white;
+      background-color: rgb(43, 101, 43);
+      border: 1px solid white;
+      border-radius: 10px;
+      margin: 20px;
+      width: 250px;
+      height: 50px;
+    }
+    .info{
+      display: flex;
+      color: white;
+      background-color: rgb(122, 247, 122);
+      padding: 30px 0px 0px 30px;
+      justify-content: space-between;
+      margin-top: 50px;
+    }
+    .info>div:nth-child(2){
+      text-align: center;
+      height: 300px;
+    }
+    .info>div>button{
+      width: 150px;
+      height: 50px;
+      color: green;
+    }
+
+    @media screen and (min-width:701px) and (max-width:1000px) {
+      /* Here Write all the necessery styles for Medium Screen size  */
+      .top{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+      }
+      .top>div:nth-child(2){
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(2,1fr);
+        gap: 10px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .mid>div{
+      display: flex;
+      flex-direction: column;
+    }
+    .mid>div>div{
+      width: 100%;
+      margin: auto;
+    }
+
+    .bottom>div{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: repeat(3,1fr);
+      gap: 10px;
+      width: 70%;
+      margin: auto;
+    }
+    }
+
+    @media screen and (min-width:100px) and (max-width:700px) {
+      /* Here Write all the necessery styles for Small Screen size  */
+      .top{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+      }
+      .top>div:nth-child(2){
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(3,1fr);
+        gap: 20px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .bottom>div{
+      display: grid;
+      grid-template-columns: repeat(1,1fr);
+      grid-template-rows: repeat(6,1fr);
+      gap: 10px;
+      width: 70%;
+      margin: auto;
+    }
+    .info{
+      display: flex;
+      flex-direction: column;
+      color: white;
+      background-color: rgb(97, 235, 97);
+      padding: 30px 0px 0px 30px;
+    }
+    .info>div{
+      margin-bottom: 20px;
+    }
+    .info img{
+      width: 60%;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="top">
+      <!-- This is the top part. Here should be 2 divs(flex) and inside the second div there should be 6 more divs(Grid) -->
+      <div>
+        <h1>Invest In IPOs</h1>
+        <p>Trusted By Millions of Indians. Start Investing Today</p>
+        <button>GET STARTED</button>
+      </div>
+
+      <div>
+        <div>
+          <img src="https://ffnews.com/wp-content/uploads/2021/04/Fime-FinTech-Finance.png" alt="" height="30px" width="30px">
+          <h4>Mutual Funds</h4>
+        </div>
+        <div>
+          <img src="https://ffnews.com/wp-content/uploads/2021/04/Fime-FinTech-Finance.png" alt="" height="30px" width="30px">
+          <h4>Mutual Funds</h4>
+        </div>
+        <div>
+          <img src="https://ffnews.com/wp-content/uploads/2021/04/Fime-FinTech-Finance.png" alt="" height="30px" width="30px">
+          <h4>Mutual Funds</h4>
+        </div>
+        <div>
+          <img src="https://ffnews.com/wp-content/uploads/2021/04/Fime-FinTech-Finance.png" alt="" height="30px" width="30px">
+          <h4>Mutual Funds</h4>
+        </div>
+        <div>
+          <img src="https://ffnews.com/wp-content/uploads/2021/04/Fime-FinTech-Finance.png" alt="" height="30px" width="30px">
+          <h4>Mutual Funds</h4>
+        </div>
+        <div>
+          <img src="https://ffnews.com/wp-content/uploads/2021/04/Fime-FinTech-Finance.png" alt="" height="30px" width="30px">
+          <h4>Mutual Funds</h4>
+        </div>
+      </div>
+    </div>
+    <div class="mid">
+      <!-- This is the mid part. Here you should have div where there will be 3 more divs(flex)  -->
+      <h2>Keep Learning. Keep growing</h2>
+      <div>
+        <div>
+          <img src="https://assets-netstorage.groww.in/web-assets/billion_groww_desktop/prod/build/client/images/blog1.d3a78143.png" alt="" width="80%">
+          <h4>How to Select/Pick stock for Intraday</h4>
+        </div>
+        <div>
+          <img src="https://assets-netstorage.groww.in/web-assets/billion_groww_desktop/prod/build/client/images/blog1.d3a78143.png" alt="" width="80%">
+          <h4>How to Select/Pick stock for Intraday</h4>
+        </div>
+        <div>
+          <img src="https://assets-netstorage.groww.in/web-assets/billion_groww_desktop/prod/build/client/images/blog1.d3a78143.png" alt="" width="80%">
+          <h4>How to Select/Pick stock for Intraday</h4>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="bottom">
+      <!-- This is the bottom part. Here you should have div where there will be 6 more divs(Grid)  -->
+      <h2>Discover Mutual Funds</h2>
+      <p>search Mutual Funds,AMCs etc.</p>
+      <div>
+        <div>
+          <img src="https://storage.googleapis.com/groww-assets/mf-assets/web/collection/light/high_returns.svg" alt="">
+          <h4>High Return</h4>
+        </div>
+        <div>
+          <img src="https://storage.googleapis.com/groww-assets/mf-assets/web/collection/light/high_returns.svg" alt="">
+          <h4>High Return</h4>
+        </div>
+        <div>
+          <img src="https://storage.googleapis.com/groww-assets/mf-assets/web/collection/light/high_returns.svg" alt="">
+          <h4>High Return</h4>
+        </div>
+        <div>
+          <img src="https://storage.googleapis.com/groww-assets/mf-assets/web/collection/light/high_returns.svg" alt="">
+          <h4>High Return</h4>
+        </div>
+        <div>
+          <img src="https://storage.googleapis.com/groww-assets/mf-assets/web/collection/light/high_returns.svg" alt="">
+          <h4>High Return</h4>
+        </div>
+        <div>
+          <img src="https://storage.googleapis.com/groww-assets/mf-assets/web/collection/light/high_returns.svg" alt="">
+          <h4>High Return</h4>
+        </div>
+      </div>
+      <button>Explore All Mutual Funds</button>
+    </div>
+    <div class="info">
+      <!-- Here we should have a image and a div  -->
+      <div>
+        <h1>We are with you at every step</h1>
+        <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid aliquam repellat expedita, deleniti reprehenderit ducimus officiis cupiditate sed vitae? Molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, in!</h4>
+        <button>Get In Touch</button>
+      </div>
+      <div>
+        <img src="https://assets-netstorage.groww.in/web-assets/billion_groww_desktop/prod/build/client/images/mfSupportImg.0379d5a2.png" alt="" height="100%">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
