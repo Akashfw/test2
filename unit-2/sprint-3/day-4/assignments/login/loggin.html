@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log-in</title>
+    <style>
+        #main{
+            height: 400px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 25%;
+            margin: auto;
+            margin-top: 100px;
+            text-align: center;
+            padding-top: 80px;
+            border-radius: 10px;
+            
+        }
+        #main>form>input,label{
+            width: 70%;
+            height: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main" >
+        <h1>Log In</h1>
+        <form action="">
+            <label for="">Email</label> <br>
+            <input id="email" type="text" placeholder="Enter your Email">
+            <br><br>
+            <label for="">Password</label><br>
+            <input id="pass" type="password" placeholder="Enter Your Password">
+            <br><br>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>
+<script>
+    let Sdetails= JSON.parse(localStorage.getItem("details"))
+    document.querySelector("form").addEventListener("submit",myfun)
+    function myfun(event){
+        event.preventDefault();
+        let em = document.querySelector("#email").value;
+        let pa = document.querySelector("#pass").value;
+        let bag=false;
+        Sdetails.forEach(element => {
+            if(element.eml==em && element.pas==pa){
+                bag=true;
+            }
+        });
+        if(bag==true){
+            alert("Log-in Successful")
+        }else{
+            alert("Wrong Credentials")
+        }
+    }
+</script>
