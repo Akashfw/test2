@@ -1,0 +1,58 @@
+table{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+  }
+  table td,table th{
+    border: 1px solid white;
+    padding: 10px;
+    
+  }
+  table tr:nth-child(even){
+    background-color: aquamarine;
+  }
+  table th{
+    background-color: rgb(188, 188, 16);
+    padding: 10px;
+  }
+  #nav{
+    display: flex;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    justify-content: space-evenly;
+    width: 99%;
+    margin: auto;
+  }
+  #nav>a{
+    display: block;
+    align-items: center;
+    margin-top: 25px;
+  }
+  #create{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 300px;
+    margin: auto;
+    height: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    /* text-align: center; */
+    padding-top: 1px;
+  }
+  form>input,label,select{
+    width: 90%;
+    justify-content: center;
+    margin: 10px;
+    height: 30px;
+  }
+  #create>h1{
+    text-align: center;
+  }
+  #filter{
+      width: 200px;
+      height: 60px;
+      margin-left: 700px;
+      margin-top: 30px;
+      font-size: 20px;
+  }
