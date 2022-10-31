@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourites</title>
+    <style>
+        h1{
+            display: block;
+            text-align: center;
+            color: cadetblue;
+        }
+        table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  margin: auto;
+  margin-top: 50px;
+  text-align: center;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #8caacf;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0468aa;
+  color: white;
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+    <h1>Favourites Assignment</h1>
+
+    <table>
+        <!-- Dont change order of columns -->
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!-- Append your output to tbody -->
+        </tbody>
+      </table>
+</body>
+</html>
+<script>
+let fav=JSON.parse(localStorage.getItem("favtodo"));
+displaytable(fav);
+
+function displaytable(fav){
+    document.querySelector("tbody").innerHTML="";
+    fav.forEach(function (element,i){
+    let row=document.createElement("tr")
+    let td1=document.createElement("td")
+    td1.innerText=element.tas;
+    let td2=document.createElement("td")
+    td2.innerText=element.ass;
+    if(element.ass=="High"){
+        td2.style.backgroundColor= "red";
+    }else{
+        td2.style.backgroundColor= "green"; 
+    }
+    let td3=document.createElement("td")
+    td3.innerText="Delete";
+    td3.addEventListener("click",function(){
+        deletfav(element,i);
+    })
+    row.append(td1,td2,td3);
+    document.querySelector("tbody").append(row);
+    }); 
+}
+
+function deletfav(element,i){
+    fav.splice(i,1);
+    console.log(fav);
+    displaytable(fav);
+    localStorage.setItem("favtodo",JSON.stringify(fav));
+}
+
+</script>

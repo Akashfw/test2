@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai calculator</title>
+    <style>
+        *{
+            text-align: center;
+        }
+          .main{
+            width: 350px;
+            height: 450px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(5,1fr);
+            gap: 10px;
+            padding: 40px;
+            border-radius: 20px;
+          }
+          .main>div:nth-child(1)~div:hover{
+            background-color: blue;
+          }
+          .main>div{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          }
+          .main>div:nth-child(1){
+            grid-column-start: 1;
+            grid-column-end: 5;
+          }
+          .main>div{
+            font-size: 30px;
+            padding-top: 20px;
+            border-radius: 20px;
+          }
+          .main>div:nth-child(5){
+            background-color: black;
+            color: white;
+          }
+          .main>div:nth-child(9){
+            background-color: black;
+            color: white;
+          }
+          .main>div:nth-child(13){
+            background-color: black;
+            color: white;
+          }
+          .main>div:nth-child(17){
+            background-color: black;
+            color: white;
+          }
+          .main>div:nth-child(16){
+            background-color: black;
+            color: white;
+          }
+          .main>div:nth-child(14){
+            background-color:red;
+            color: white;
+          }
+    </style>
+</head>
+<body>
+    <h1>Masai Calculator</h1>
+    <div class="main">
+        <div id="display"></div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>+</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>-</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>*</div>
+        <div>C</div>
+        <div>0</div>
+        <div>=</div>
+        <div>/</div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("div").addEventListener("click",print);
+    let bag="";
+    function print(all){
+        let input=all.target.innerText;
+       
+        if(input=="C"){
+          bag="";
+          document.getElementById("display").innerText=bag;
+        }else if(input=="="){
+          let res=eval(bag);
+          document.getElementById("display").innerText=res;
+        }else{
+          bag+=input;
+          document.getElementById("display").innerText=bag;
+        }
+        
+        
+    }
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>masai cal</title>
+    <style>
+        body>div:nth-child(1){
+            width: 60%;
+            margin: auto;
+            text-align: center;
+        }
+        body>div:nth-child(2){
+            width: 60%;
+            margin: auto;
+            text-align: center;
+        }
+        body>div:nth-child(2)>button:nth-child(1){
+            background-color: aqua;
+            margin: 10px;
+        }
+        body>div:nth-child(2)>button:nth-child(2){
+            background-color: rebeccapurple;
+            margin: 10px;
+        }
+        body>div:nth-child(2)>button:nth-child(3){
+            background-color: palevioletred;
+            margin: 10px;
+        }
+        body>div:nth-child(2)>button:nth-child(4){
+            background-color: greenyellow;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <input id="num1" type="number" placeholder="Enter 1st Number">
+        <input id="num2" type="number" placeholder="Enter 2nd Number">
+    </div>
+    <div>
+        <button onclick="ad()">Add</button>
+        <button onclick="sub()">Subtract</button>
+        <button onclick="mul()">Multiply</button>
+        <button onclick="div()">Divide</button>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    function ad(){
+        let a=document.getElementById("num1").value;
+        let b=document.getElementById("num2").value;
+        let sum= Number(a)+Number(b);
+        alert(sum);  
+    }
+    function sub(){
+        let a=document.getElementById("num1").value;
+        let b=document.getElementById("num2").value;
+        let sum= Number(a)-Number(b);
+        alert(sum);  
+    }
+    function mul(){
+        let a=document.getElementById("num1").value;
+        let b=document.getElementById("num2").value;
+        let sum= Number(a)*Number(b);
+        alert(sum);  
+    }
+    function div(){
+        let a=document.getElementById("num1").value;
+        let b=document.getElementById("num2").value;
+        let sum= Number(a)/Number(b);
+        alert(sum);  
+    }
+
+</script>

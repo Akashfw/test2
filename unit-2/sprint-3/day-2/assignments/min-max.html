@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min-Max</title>
+    <style>
+        .top{
+            width: 60%;
+            height: 150px;
+            margin: auto;display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        div{
+            text-align: center;
+        }
+        #min{
+            width: 150px;
+            height: 100px;
+            background-color: red;
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #max{
+            width: 150px;
+            height: 100px;
+            background-color: green;
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #score{
+            width: 300px;
+            height: 100px;
+            background-color: lightskyblue;
+            margin: auto;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #bottom{
+            width: 300px;
+            height: 400px;
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: repeat(5,1fr);
+            gap: 20px;
+            margin: auto;
+            margin-top: 50px;
+            font-size: 30px;
+        }
+        #bottom>div{
+            /* background-color: aqua; */
+            border-radius: 5px;
+            display: flex;
+            align-items: center;justify-content: center;
+        }
+        #enter{
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start: 5;
+            grid-row-end: 6;
+            height: 50px;
+            background-color: black;
+            color: white;
+        }
+        #pur{
+            grid-column-start: 2;
+            grid-column-end: 3;
+            background-color: purple;
+        }
+        .green{
+            background-color: green;
+        }
+        .orange{
+            background-color: orangered;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="top">
+        <div>
+            <div id="min">43</div>
+            <div><h1>Min</h1></div>
+        </div>
+        <div>
+            <div id="max">2019</div>
+            <div><h1>Max</h1></div>
+        </div>
+    </div>
+    <div>
+        <div><h1>SCORE</h1></div>
+        <div id="score">#</div>
+    </div>
+
+    <div id="bottom">
+        <div class="green">1</div>
+        <div class="orange">2</div>
+        <div class="green">3</div>
+        <div class="orange">4</div>
+        <div class="orange">5</div>
+        <div class="orange">6</div>
+        <div class="green">7</div>
+        <div class="orange">8</div>
+        <div class="green">9</div>
+        <div id="pur">0</div>
+        <div id="enter">ENTER</div>
+    </div>
+     
+</body>
+</html>
+
+<script>
+    document.addEventListener("click",myFun);
+    let bag="";
+    let min=43;
+    let max=2019;
+    function myFun(event){
+      let val= event.target.innerText;
+      
+      if(val=="ENTER"){
+        document.getElementById("score").innerText="";
+        let Val=Number(bag);
+        bag="";
+         if(Val<min){
+            min=Val;
+            document.getElementById("min").innerText=min;
+         }
+         if(Val>max){
+            max=Val;
+            document.getElementById("max").innerText=max;
+         }
+      }else{
+        bag+=val;
+        document.getElementById("score").innerText=bag;
+      }
+
+    }
+</script>

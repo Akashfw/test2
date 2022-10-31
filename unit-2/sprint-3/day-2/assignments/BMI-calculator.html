@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #result{
+            color: rgb(20, 221, 221);
+        }
+        h1{
+            color: teal;
+        }
+    </style>
+</head>
+<body>
+    <h1>Check your BMI</h1>
+    <h3>Enter your weight and height below to check your BMI result</h3>
+    <h3>Put your weight in here(kg)</h3>
+    <input type="number" id="weight">
+    <h3>Put your height in here(m)</h3>
+    <input type="number" id="height">
+    <br>
+    <button onclick="cal()">Calculate BMI</button>
+    <h3 id="result"></h3>
+
+</body>
+</html>
+
+<script>
+    function cal(){
+        let W= document.getElementById("weight").value;
+        let H= document.getElementById("height").value;
+        let bmi= W/(H*H);
+        if(bmi<=18.4){
+            print="Your BMI is "+bmi+" which means you are UnderWeight";
+        }else if(bmi >= 18.5 && bmi <= 24.9){
+            print="Your BMI is "+bmi+" which means you are Normal Weight";
+        }else if(bmi >= 25 && bmi <= 29.9){
+            print="Your BMI is "+bmi+" which means you are Overweight";
+        }else{
+            print="Your BMI is "+bmi+" which means you are Obese";
+        }
+        document.getElementById("result").innerText=print;
+    }
+</script>

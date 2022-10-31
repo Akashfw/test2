@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button</title>
+    <style>
+        #main{
+            height: 100px;
+            width: 90%;
+            margin: auto;
+            margin-top: 300px;
+            display: grid;
+            grid-template-columns: repeat(9,1fr);
+            gap: 10px;
+        }
+       #main>div{
+            height: 50px;
+            border-radius: 5px;
+            font-size: 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #main>div:nth-child(1){
+            background-color: rgb(50, 50, 227);
+        }
+        #main>div:nth-child(2){
+            background-color: rgb(114, 114, 239);
+        }
+        #main>div:nth-child(3){
+            background-color: rgb(68, 235, 68);
+        }
+        #main>div:nth-child(4){
+            background-color: rgb(224, 32, 96);
+        }
+        #main>div:nth-child(5){
+            background-color: rgb(157, 157, 7);
+        }
+        #main>div:nth-child(6){
+            background-color: teal;
+        }
+        #main>div:nth-child(7){
+            background-color: white;
+            color: black;
+        }
+        #main>div:nth-child(8){
+            background-color: black;
+        }
+        #main>div:nth-child(9){
+            background-color: whitesmoke;
+            color: blue;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div>Primary</div>
+        <div>Secondary</div>
+        <div>Success</div>
+        <div>Danger</div>
+        <div>Warning</div>
+        <div>Info</div>
+        <div>Light</div>
+        <div>Dark</div>
+        <div>Link</div>
+    </div>
+</body>
+</html>

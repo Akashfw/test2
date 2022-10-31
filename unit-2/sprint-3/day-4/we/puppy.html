@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>puppy</title>
+    <style>
+        #main{
+            display: flex;
+        }
+        div{
+            width: 500px;
+        }
+        div>button{
+            margin-right: 10px;
+            height: 30px;
+        }
+        div>h3{
+            color:purple;
+            margin: 5px;  
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="https://www.dogtime.com/assets/uploads/2011/03/puppy-development-1280x720.jpg" alt="" width="100%">
+        <div id="main">
+            <button class="bu">Like👍</button>
+            <button class="bu">Dislike👎</button>
+            <h3></h3>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("#main").addEventListener("click",myfun);
+    let count=localStorage.getItem("like") || 0;
+    document.querySelector("h3").innerText=count;
+     function myfun(event){
+          let input= event.target.innerText;
+          if(input=="Like👍"){
+            count++
+            document.querySelector("h3").innerText=count;
+          }else if(input=="Dislike👎"){
+            count--;
+            document.querySelector("h3").innerText=count;
+          }
+          localStorage.setItem("like",count);
+     }
+</script>
