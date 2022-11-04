@@ -48,6 +48,7 @@ function display(arr){
 
 function deletefav(element,i){
     arr.splice(i,1);
+    document.querySelector("tbody").innerHTML="";
     display(arr);
     localStorage.setItem("tasks",JSON.stringify(arr));
 }
