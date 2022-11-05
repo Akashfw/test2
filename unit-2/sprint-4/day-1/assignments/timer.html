@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Watch</title>
+    <style>
+        #clock{
+            display: flex;
+            font-size: 80px;
+            color: white;
+            height: 100px;
+            margin: auto;
+            align-items: center;
+            height: 60vh;
+            justify-content: center;
+        }
+        body{
+            background-color: aqua;
+        }
+        #clock>div{
+            background-color:rgb(12, 110, 110);
+            color: white;
+            font-size: 50px;
+            padding: 30px;
+            margin: 30px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+        }
+       #but{
+        display: flex;
+        justify-content: center;
+       }
+       button{
+        margin: 20px;
+        font-size: 20px;
+        background-color: darkslateblue;
+        border-radius: 10px;
+        border: 1px solid darkorchid;
+        padding: 5px 15px;
+       }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <div id="hrs">00</div>
+        <span>:</span>
+        <div id="mins">00</div>
+        <span>:</span>
+        <div id="secs">00</div>
+        <div id="ampm">Am</div>
+    </div>
+    <div id="but">
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
+    </div>
+</body>
+</html>
+<script>
+
+
+    function clock(){
+        let time=new Date();
+    let hr= time.getHours();
+    let min=time.getMinutes();
+    let sec=time.getSeconds();
+    var half="";
+    if(hr>=12){
+        half="Pm"
+    }else{
+        half="Am"
+    }
+    document.querySelector("#ampm").innerText=half;
+    document.querySelector("#hrs").innerText=hr;
+    document.querySelector("#mins").innerText=min;
+    document.querySelector("#secs").innerText=sec;
+    let set= setInterval(clock,1000);
+    document.querySelector("#pause").addEventListener("click",function(){
+        clearInterval(set);
+    });
+
+    }
+    
+    document.querySelector("#start").addEventListener("click",myfun);
+    
+    function myfun(){
+        clock();
+    }
+
+    
+     
+    // function myfu(){
+    //     let set= setInterval(clock,1000);
+        
+    //     console.log("wtf")
+    // }
+    
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div>
+        <h2>OTP Verification</h2>
+        <form action="">
+            <input type="number" placeholder="Enter your otp" id="otp">
+            <input type="submit">
+        </form>
+        
+    </div>
+    
+</body>
+</html>
+<script>
+  document.querySelector("form").addEventListener("submit",function(event){
+          event.preventDefault();
+          let val=document.querySelector("#otp").value;
+          let pro= new Promise(function(resolve,reject){
+               if(val==1234){
+                resolve("otp is correct")
+               }else{
+                reject("otp is wrong")
+               }
+          });
+          pro.then(function(right){console.log(right)}).catch(function(wrong){console.log(wrong)});
+  })
+  
+</script>
