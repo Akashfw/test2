@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            margin: 20px 10px;
+           
+        }
+        #container>div{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 10px;
+            text-align: center;
+         
+        }
+        #container>div>img{
+            width: 80%;
+            height: 40%;
+
+        }
+        input{
+            padding: 10px;
+            width: 300px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        p{
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <h2 id="total"></h2>
+</body>
+</html>
+<script>
+    let item= JSON.parse(localStorage.getItem("cart"));
+    let totalcost= item.reduce(function(acc,el){
+        return acc+ Number(el.price)
+    },0);
+     document.querySelector("#total").innerText="Total Cost = "+totalcost;
+    display(item);
+    function display(arr){
+        document.querySelector("#container").innerHTML="";
+        arr.forEach(ele => {
+            let Div= document.createElement("div");
+            let Img= document.createElement("img");
+            Img.setAttribute("src",ele.image);
+            let H2= document.createElement("h2");
+            H2.innerText=ele.title;
+            let dis= document.createElement("p");
+            dis.innerText=ele.description;
+            let pri= document.createElement("h2")
+            pri.innerText= "$"+" "+ele.price;
+            let rat= document.createElement("h3")
+            rat.innerText=ele.rating.rate +" "+"*";
+            Div.append(Img,H2,dis,pri,rat);
+            document.querySelector("#container").append(Div);
+
+        });
+    }
+</script>

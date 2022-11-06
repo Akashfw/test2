@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            margin: 20px 10px;
+           
+        }
+        #container>div{
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 10px;
+            text-align: center;
+         
+        }
+        #container>div>img{
+            width: 80%;
+            height: 40%;
+
+        }
+        input{
+            padding: 10px;
+            width: 300px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        @media all and (min-width:400px) and (max-width:700px){
+            #container{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: auto;
+            }
+        }
+        @media all and (min-width:200px) and (max-width:399px){
+            #container{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            grid-template-rows: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <select name="" id="sort" onchange="sortfun()">
+        <option value="LTH">LTH</option>
+        <option value="HTL">HTL</option>
+    </select>
+    <select name="filte" id="filt" onchange="filterfun()">
+        <option value="Asia">Asia</option>
+        <option value="Americas">Americas</option>
+        <option value="Africa">Africa</option>
+
+    </select>
+    <div id="container">
+    </div>
+</body>
+</html>
+<script>
+    let url="https://restcountries.com/v3.1/all";
+    let bag=[];
+
+    async function getData(){
+        try{
+            let res= await fetch(url);
+            let out= await res.json();
+            bag=out;
+            display(out);
+        }catch (err){
+            alert(err);
+        }  
+    }
+    function display(out){
+        document.querySelector("#container").innerHTML="";
+        out.forEach((elem) => {
+           let di= document.createElement("div");
+           let im=document.createElement("img");
+           im.setAttribute("src" ,elem.flags.png);
+           let title=document.createElement("h2");
+           title.innerText=elem.name.common;
+           let pop=document.createElement("p");
+           pop.innerText=elem.population;
+           let region=document.createElement("p")
+           region.innerText=elem.region;
+           let cap= document.createElement("p")
+           cap.innerText=elem.capital;
+           di.append(im,title,pop,region,cap);
+           document.querySelector("#container").append(di);
+        });
+    }
+    getData();
+
+    function sortfun(){
+           let val= document.querySelector("#sort").value;
+           if(val=="LTH"){
+               bag.sort(function(a,b){
+                   return a.population - b.population
+               });
+           }
+           if(val=="HTL"){
+               bag.sort(function(a,b){
+                   return b.population - a.population
+               });
+           }
+           display(bag);
+    }
+     
+     function filterfun(){
+        let val2= document.querySelector("#filt").value;
+            let filterdata= bag.filter(function(element){
+                return element.region == val2; 
+            })
+          display(filterdata);
+     }
+</script>
