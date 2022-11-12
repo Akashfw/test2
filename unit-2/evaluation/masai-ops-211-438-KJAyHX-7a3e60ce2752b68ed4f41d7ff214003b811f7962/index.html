@@ -36,12 +36,12 @@
     </style>
   </head>
   <body>
-    <select id="sort_population" onchange="sort()">
+    <select id="sort_population" onchange="sortfun()">
       <option value="">Sort By Population</option>
       <option value="asc">ASC</option>
       <option value="desc">DESC</option>
     </select>
-    <select id="filter_region" onchange="filter()">
+    <select id="filter_region" onchange="filterfun()">
       <option value="">Filter By Region</option>
       <option value="Africa">Africa</option>
       <option value="Americas">Americas</option>
@@ -59,6 +59,7 @@
     let url="https://restcountries.com/v3.1/all";
     getData();
     let data=[];
+    let filterdata=[];
 
         async function getData(){
           try{
@@ -66,6 +67,7 @@
             let output= await res.json();
             displayflag(output);
             data=output;
+            filterdata=output;
           }catch(error){
             console.log(error);
           }
@@ -80,17 +82,17 @@
             let name=document.createElement("h2");
             name.innerText=elem.name.common;
             let pop=document.createElement("p");
-            pop.innerText=elem.population;
+            pop.innerText="Population: "+elem.population;
             let reg=document.createElement("p");
-            reg.innerText=elem.region;
+            reg.innerText="Region: "+elem.region;
             let cap=document.createElement("p");
-            reg.innerText=elem.capital;
+            cap.innerText="Capital: "+elem.capital;
             Div.append(Img,name,pop,reg,cap);
             document.querySelector("#all_countries").append(Div);
           });
         }
 
-       function sort(){
+       function sortfun(){
          let val=document.querySelector("#sort_population").value;
          if(val=="asc"){
            data.sort(function(a,b){
@@ -105,12 +107,13 @@
          displayflag(data);
        };
    
-       function filter(){
+       function filterfun(){
          let va=document.querySelector("#filter_region").value;
-         let data2=data.filter(function(element){
+         let data2=filterdata.filter(function(element){
            return element.region == va;
          });
          displayflag(data2);
+         data=data2;
        }
 
           
