@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country Finder</title>
+    <style>
+      /* Write all necessery css here  */
+        
+      #all_countries{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+        margin: 20px;
+      }
+      #all_countries>div{
+        padding: 10px 20px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      select{
+        margin: 10px;
+        width: 150px;
+        height: 30px;
+       
+      }
+      @media all and (min-width:300px) and (max-width:720px){
+        #all_countries{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto;
+       
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <select id="sort_population" onchange="sortfun()">
+      <option value="">Sort By Population</option>
+      <option value="asc">ASC</option>
+      <option value="desc">DESC</option>
+    </select>
+    <select id="filter_region" onchange="filterfun()">
+      <option value="">Filter By Region</option>
+      <option value="Africa">Africa</option>
+      <option value="Americas">Americas</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Oceania">Oceania</option>
+    </select>
+    <div id="all_countries">
+      <!-- Append Country Cards here  -->
+    </div>
+  </body>
+  <script>
+    // Write all necessery JS here
+
+    let url="https://restcountries.com/v3.1/all";
+    getData();
+    let data=[];
+    let filterdata=[];
+
+        async function getData(){
+          try{
+            let res= await fetch(url);
+            let output= await res.json();
+            displayflag(output);
+            data=output;
+            filterdata=output;
+          }catch(error){
+            console.log(error);
+          }
+        }
+
+        function displayflag(arr){
+          document.querySelector("#all_countries").innerHTML="";
+          arr.forEach((elem) => {
+            let Div=document.createElement("div")
+            let Img=document.createElement("img");
+            Img.setAttribute("src",elem.flags.png);
+            let name=document.createElement("h3");
+            name.innerText=elem.name.common;
+            let pop=document.createElement("p");
+            pop.innerText="Population: "+elem.population;
+            let reg=document.createElement("p");
+            reg.innerText="Region: "+elem.region;
+            let cap=document.createElement("p");
+            cap.innerText="Capital: "+elem.capital;
+            Div.append(Img,name,pop,reg,cap);
+            document.querySelector("#all_countries").append(Div);
+          });
+        }
+
+       function sortfun(){
+         let val=document.querySelector("#sort_population").value;
+         if(val=="asc"){
+           data.sort(function(a,b){
+             return a.population-b.population
+           });
+         }
+         if(val=="desc"){
+           data.sort(function(a,b){
+             return b.population-a.population
+           });
+         }
+         displayflag(data);
+       };
+   
+       function filterfun(){
+         let va=document.querySelector("#filter_region").value;
+         let data2=filterdata.filter(function(element){
+           return element.region == va;
+         });
+         displayflag(data2);
+         data=data2;
+       }
+
+          
+  </script>
+</html>
