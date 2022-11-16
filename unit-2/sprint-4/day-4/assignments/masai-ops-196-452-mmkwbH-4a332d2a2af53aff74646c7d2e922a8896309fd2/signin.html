@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in Page</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="./index.html">Signup</a>
+        <a href="./signin.html">Signin</a>
+      </div>
+      <div id="signin">
+        <h1>Please Enter Your Details</h1>
+        <form>
+          <input type="email" id="email">
+          <input type="password"  id="pass">
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+</body>
+<script>
+  let Details=JSON.parse(localStorage.getItem("account-data")) || [];
+  document.querySelector("form").addEventListener("submit",myfun)
+      function myfun(event){
+        event.preventDefault();
+        let email,pass;
+
+        email=document.querySelector("#email").value;
+        pass=document.querySelector("#pass").value;
+             let count=0;
+            Details.forEach(element => {
+
+                if(email==element.em && pass==element.pa){
+                   count++;
+                }
+                
+             });
+             if(count>0){
+                window.location.assign("index.html")
+                alert("Sign in Successful");
+             }else{
+                alert("Wrong Credentials")
+             }
+             document.querySelector("#email").value="";
+             document.querySelector("#pass").value="";
+             } 
+</script>
+</html>

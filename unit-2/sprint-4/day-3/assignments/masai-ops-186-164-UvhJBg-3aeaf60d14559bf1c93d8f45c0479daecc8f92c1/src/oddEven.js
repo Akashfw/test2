@@ -1,7 +1,7 @@
 
 function generateNumber() {
   // generate a random integer(hint : Math.random)
- let num=Math.floor( Math.random()*100);
+ let num=Math.floor( Math.random()*100)+1;
  document.querySelector("#number").innerText=num;
  checkOddEven(num);
 }
