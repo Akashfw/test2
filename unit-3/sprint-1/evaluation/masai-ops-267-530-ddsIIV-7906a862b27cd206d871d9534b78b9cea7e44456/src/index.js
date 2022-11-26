@@ -28,6 +28,7 @@ let details={
 
 
 
+
 details.getInfo();
 details.getResult();
 
