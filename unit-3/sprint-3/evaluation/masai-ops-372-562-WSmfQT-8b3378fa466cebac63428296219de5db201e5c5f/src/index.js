@@ -56,7 +56,10 @@ async function getProductsSortedByPrice() {
 // hint: we are reducing an array down to an object.
 
 async function getWellFormattedData() {
- let newdata=bag.reduce((acc,item)=>{
+ let bag1= bag.sort((a,b)=>{
+return a.id -b.id
+  });
+ let newdata=bag1.reduce((acc,item)=>{
 let na=item.brand;
 let id= item.id;
 
