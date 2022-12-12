@@ -103,5 +103,30 @@ function showdata(real_data){
   
   container.innerHTML= new_data.join(" ");
   console.log(container);
+
+  let all_lable= document.querySelectorAll(".todo-item-checkbox");
+  for(let all of all_lable){
+    all.addEventListener("click",(event)=>{
+      let item_id = event.target.dataset.id;
+      let item_status= event.target.dataset.completed === "true" ? false : true;
+      toggeldata(item_id,item_status);
+    })
+  }
 };
 
+
+async function toggeldata(id,status){
+  try {
+    let toggel_req = await fetch(`${baseServerURL}/todos/${id}`,{
+      method : "PATCH",
+      headers : {
+        "Content-Type" : "application/json",
+        Authorization: `Bearer ${localStorage.getItem("localAccessToken")}`
+      },
+      body : JSON.stringify({["completed"] : status})
+    });
+    
+  } catch (error) {
+    
+  }
+}
