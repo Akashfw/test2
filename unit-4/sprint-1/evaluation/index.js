@@ -47,7 +47,8 @@ const server=http.createServer((req,res)=>{
             }
         })
     }else{
-        console.log(err);
+        res.write();
+        res.end("Invalid end point")
     }
 });
 
