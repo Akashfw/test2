@@ -1,0 +1,16 @@
+ To create databse =>   use graduates
+
+ To create collection=>  db.createCollection("users")
+
+To insert data  => db.users.insertMany(all_data);
+
+To find single male =>  db.users.find({gender:"Male",isMarried:false});
+
+
+To find female with more then 80% =>   db.users.find({gender:"Female",percentage:{$gt:80}})
+
+To find users with more then 50%  =>   db.users.find({percentage:{$gte:50}})
+
+To delete data of students with less then 40%  =>  db.users.deleteMany({percentage:{$lt:40}})
+
+To update data  =>  db.users.updateMany({gender:"Female"},{scholarship:true})
