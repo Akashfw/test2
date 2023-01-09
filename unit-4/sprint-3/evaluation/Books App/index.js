@@ -1,10 +1,13 @@
 const express = require("express");
-
+const {bookroute} = require("./routes/bookroutes");
 const app = express();
-const {connection,Bookmodel} = require("./config/db");
+const {connection} = require("./config/db");
 app.use(express.json());
 const {model} = require("mongoose");
 require('dotenv').config();
+
+
+app.use(bookroute)
 
 
 
