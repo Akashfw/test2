@@ -57,7 +57,7 @@ bookroute.patch("/editbooks/:id", async (req,res)=>{
     }
 });
 
-bookroute.delete("/deletbooks/:id", async (req,res)=>{
+bookroute.delete("/deletebooks/:id", async (req,res)=>{
     const ID= req.params.id;
     
     try {

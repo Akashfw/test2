@@ -14,6 +14,8 @@ const express = require("express");
          }else{
              next()
          }   
+     }else{
+         next()
      }
  });
 

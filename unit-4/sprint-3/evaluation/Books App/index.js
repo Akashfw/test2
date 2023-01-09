@@ -6,9 +6,11 @@ const {connection} = require("./config/db");
 // const {model} = require("mongoose");
 require('dotenv').config();
 const {validator} = require("./middleware/validator")
+const {recorder} = require("./middleware/recorder")
 
-app.use(validator)
-app.use(bookroute)
+app.use(validator);
+app.use(recorder);
+app.use(bookroute);
 
 
 
