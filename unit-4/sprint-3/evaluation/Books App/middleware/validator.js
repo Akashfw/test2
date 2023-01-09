@@ -1,5 +1,6 @@
 const express = require("express");
  const validator= express();
+ validator.use(express.json());
 
  validator.use((req,res,next)=>{
      if(req.method=="POST" && req.url=="/addbooks"){
@@ -8,13 +9,16 @@ const express = require("express");
          let price=data.price;
          let genre= data.genre;
          let author= data.author;
-         if(title==""||price==""||genre==""||author==""){
+         if(title==""||price==undefined||genre==""||author==""){
              res.send({"err": "All the fields are not there"})
          }else{
              next()
          }   
-
      }
- })
+ });
+
+ module.exports={
+     validator
+ }
 
  

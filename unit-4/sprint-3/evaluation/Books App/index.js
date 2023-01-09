@@ -5,8 +5,9 @@ const {connection} = require("./config/db");
 // app.use(express.json());
 // const {model} = require("mongoose");
 require('dotenv').config();
+const {validator} = require("./middleware/validator")
 
-
+app.use(validator)
 app.use(bookroute)
 
 
