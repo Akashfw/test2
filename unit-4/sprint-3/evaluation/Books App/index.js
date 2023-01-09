@@ -2,8 +2,8 @@ const express = require("express");
 const {bookroute} = require("./routes/bookroutes");
 const app = express();
 const {connection} = require("./config/db");
-app.use(express.json());
-const {model} = require("mongoose");
+// app.use(express.json());
+// const {model} = require("mongoose");
 require('dotenv').config();
 
 
