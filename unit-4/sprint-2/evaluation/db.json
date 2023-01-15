@@ -1,1 +1,24 @@
-{"students":[{"roll_no":1,"name":"chunnu","location":"raipur","course":"web development"}],"teachers":[{"emp_id":7,"name":"akash","sub":"math","exp":5}]}
+{
+    "students": [
+        {
+            "roll_no": 1,
+            "name": "chunnu",
+            "location": "raipur",
+            "course": "web development"
+        }
+    ],
+    "teachers": [
+        {
+            "emp_id": 7,
+            "name": "akash",
+            "sub": "math",
+            "exp": 5
+        },
+        {
+            "emp_id": 555,
+            "name": "hshsh",
+            "sub": "sbbsbhsz",
+            "exp": 15
+        }
+    ]
+}
