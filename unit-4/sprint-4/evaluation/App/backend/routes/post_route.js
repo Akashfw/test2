@@ -25,3 +25,31 @@ postRouter.post("/create", async(req,res)=>{
     }
 });
 
+postRouter.patch("/update/:id",async (req,res)=>{
+    try {
+        const ID= req.params.id;
+        const payload= req.body;
+        await Postmodel.findByIdAndUpdate({_id:ID},payload);
+        res.send(`post with ${ID} has been updated`);
+    } catch (err) {
+        console.log(err);
+        console.log("something went wrong")
+    }
+});
+
+postRouter.delete("/delete/:id" , async (req,res)=>{
+try {
+    const ID=req.params.id;
+    await Postmodel.findByIdAndDelete({_id:ID});
+    res.send(`post with ${ID} has been deleted`);
+} catch (err) {
+    console.log(err);
+        console.log("something went wrong")
+    
+}
+});
+
+module.exports={
+    postRouter
+}
+
