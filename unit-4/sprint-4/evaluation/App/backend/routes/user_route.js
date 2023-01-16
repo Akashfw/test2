@@ -23,6 +23,7 @@ userRoute.post("/login", async (req,res)=>{
     const {email,password}=req.body;
     try {
         const user= await Usermodel.find({email});
+        console.log(user);
         if(user.length>0){
             bcrypt.compare(password, user[0].password,(err,result)=>{
                 if(result){

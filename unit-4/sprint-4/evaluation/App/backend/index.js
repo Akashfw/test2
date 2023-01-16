@@ -8,7 +8,7 @@ const {userRoute} = require("./routes/user_route");
 
 
 
-app.use(userRoute)
+app.use("/users",userRoute)
 
 app.listen(process.env.port, async()=>{
     try {
