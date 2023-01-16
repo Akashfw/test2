@@ -3,14 +3,12 @@ require("dotenv").config();
 const app=express();
 app.use(express.json());
 const {connection}= require("./config/db");
-const {userRoute}=require("./routes/user_route");
+const {userRoute} = require("./routes/user_route");
 
 
-// app.get("/", async(req,res)=>{
-//     res.send("homepage")
-// });
 
-// app.use(userRoute)
+
+app.use(userRoute)
 
 app.listen(process.env.port, async()=>{
     try {
