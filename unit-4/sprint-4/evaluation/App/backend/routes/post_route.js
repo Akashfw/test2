@@ -1,11 +1,16 @@
+const { application } = require("express");
 const express= require("express");
 const postRouter= express.Router();
+
 
 const {Postmodel} = require("../model/post_model");
 
 postRouter.get("/",async(req,res)=>{
+    let device1= req.query.device1;
+    let device2=req.query.device2;
+    
     try {
-        const post= await Postmodel.find();
+        const post= await Postmodel.find({device1,device2});
         res.send(post)
     } catch (err) {
         console.log(err);

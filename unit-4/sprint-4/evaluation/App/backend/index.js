@@ -10,7 +10,7 @@ const {authenticate} = require("./middleware/authentication")
 
 app.use("/users",userRoute);
 app.use(authenticate)
-app.use("./posts",postRouter);
+app.use("/posts",postRouter);
 app.listen(process.env.port, async()=>{
     try {
         await connection;
