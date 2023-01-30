@@ -8,7 +8,7 @@ const {postRouter} = require("./routes/post_route")
 const {authenticate} = require("./middleware/authentication")
 
 
-app.use("/users",userRoute);
+app.use("/",userRoute);
 app.use(authenticate)
 app.use("/posts",postRouter);
 app.listen(process.env.port, async()=>{

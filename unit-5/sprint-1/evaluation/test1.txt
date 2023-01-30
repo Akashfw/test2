@@ -1,0 +1,20 @@
+1) Find total population of all the countries in Eastern Europe Region
+  
+  ans= db.countries.aggregate([{$match : {Region:"EASTERN EUROPE"}},{$group :{_id:"$Region",total_pop:{$sum:"$Population"}}}])
+
+
+
+2)Find Average population per country in All regions
+   sol= foer this we will group countries with region and find Average
+
+   ans= db.countries.aggregate([{$group :{_id:"$Region",avg_pop:{$avg:"$Population"}}}])
+ 
+
+3)Find Average birth rate of entire world
+
+ans= db.countries.aggregate([{$group :{_id:null,avg_birthrate:{$avg:"$Birthrate"}}}]);
+
+
+4)Find all the countries, sort them by GDP ascending, population descending, take top 10 countries out
+
+ans= db.countries.aggregate([{$sort:{'GDP ($ per capita)':1}},{$sort:{"Population":-1}},{$limit:10}])

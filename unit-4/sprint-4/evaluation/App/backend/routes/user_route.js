@@ -2,9 +2,12 @@ const express= require("express");
 const {Usermodel}= require("../model/user_model");
 const bcrypt = require("bcrypt");
 const jwt= require("jsonwebtoken");
-const userRoute= express.Router()
+const userRoute= express.Router();
+userRoute.get("/",(req,res)=>{
+    res.send("Home Page")
+})
 
-userRoute.post("/register", async (req,res)=>{
+userRoute.post("/users/register", async (req,res)=>{
     const {name,email,gender,password}= req.body;
     try {
         bcrypt.hash(password,10,async (err,hash)=>{
@@ -19,7 +22,7 @@ userRoute.post("/register", async (req,res)=>{
 });
 
 
-userRoute.post("/login", async (req,res)=>{
+userRoute.post("/users/login", async (req,res)=>{
     const {email,password}=req.body;
     try {
         const user= await Usermodel.find({email});
