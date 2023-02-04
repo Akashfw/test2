@@ -37,8 +37,8 @@ app.post("/login", async (req, res) => {
     const hashedpwd = user?.pass
     bcrypt.compare(pass, hashedpwd, function(err, result) {
         if(result){
-            const token = jwt.sign({userID : user._id}, "SECRET", {expiresIn : 20})
-            const refresh_token = jwt.sign({userID : user._id}, "REFRESH_SECRET", {expiresIn : 100})
+            const token = jwt.sign({userID : user._id}, "SECRET", {expiresIn : '1h'})
+            const refresh_token = jwt.sign({userID : user._id}, "REFRESH_SECRET", {expiresIn : '7d'})
             res.send({msg : "login successfull", token, refresh_token})
         }
         else{
