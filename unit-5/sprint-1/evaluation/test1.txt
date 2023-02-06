@@ -30,3 +30,6 @@ ans= db.countries.aggregate([{$group :{_id:"$Region",avg_pop:{$sum:"$Population"
 7)Sort all countries by population descending, get 11 to 20 position countries from these.
 
  ans= db.countries.aggregate([{$sort:{'Population':-1}},{$skip:10},{$limit:10}])
+
+
+
