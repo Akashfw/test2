@@ -1,0 +1,4 @@
+1) db.purchases.createIndex({'user_id':1})
+2)db.users.aggregate([{$lookup:{from:"Purchases",localField:"_id",foreignField:"user_id",as:"Purchases"}}]);
+
+3)db.purchases.aggregate([{$group:{_id:"$user_id",total_purchases:{$sum:1},total_spending:{$sum:"$price"}}},{$lookup:{from:"users",localField:"_id",foreignField:"_id",as:"userDetail"}},{$addFields:{name:{$first:"$userDetail.name"}}},{$project:{userDetail:0}}])
