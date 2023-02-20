@@ -17,7 +17,7 @@ document.getElementById("btn").addEventListener("click",(event)=>{
    tr1.append(td1,td2,td3);
    document.getElementById("runs").append(tr1)
 });
-
+console.log(val)
 
 // let tr2=document.createElement("tr");
 //    let td4= document.createElement("td");

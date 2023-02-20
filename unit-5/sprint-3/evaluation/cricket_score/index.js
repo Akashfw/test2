@@ -7,7 +7,7 @@ app.use(express.json())
 const server= http.createServer(app);
 const io= socket(server);
 let score={
-    run:45,
+    run:50,
     over:4,
     wicket:1
 }
