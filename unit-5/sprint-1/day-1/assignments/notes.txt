@@ -1,0 +1,206 @@
+Recap of basic mongo CRUD :-
+
+C: Create a document using a mongoose model and the save() method.
+R: Read documents using the find() method on a mongoose model and the exec() method.
+U: Update documents using the updateOne(), updateMany(), or findOneAndUpdate() methods on a mongoose model.
+D: Delete documents using the deleteOne() or deleteMany() methods on a mongoose model.
+Set up a connection to MongoDB using Mongoose. In your app.js file, add the following code:
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/my_database', { useNewUrlParser: true });
+Define a schema for your data. A schema is a blueprint for the structure of your documents in MongoDB. Here's an example schema for a blog post:
+const mongoose = require('mongoose');
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  author: String,
+  date: { type: Date, default: Date.now }
+});
+Create a model for your data based on the schema. This allows you to interact with the database using the model. Here's an example model for the blog post schema:
+const mongoose = require('mongoose');
+const Post = mongoose.model('Post', postSchema);
+Set up your Express routes for the CRUD operations:
+Create: POST /posts
+app.post('/posts', (req, res) => {
+  const newPost = new Post({
+    title: req.body.title,
+    content: req.body.content,
+    author: req.body.author
+  });
+  newPost.save((err, post) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(post);
+    }
+  });
+});
+Read: **GET /posts**and GET /posts/:id
+app.get('/posts', (req, res) => {
+  Post.find((err, posts) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(posts);
+    }
+  });
+});
+
+app.get('/posts/:id', (req, res) => {
+  Post.findById(req.params.id, (err, post) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(post);
+    }
+  });
+});
+Update: PUT /posts/:id
+app.put('/posts/:id', (req, res) => {
+  Post.findById(req.params.id, (err, post) => {
+    if (err) {
+      res.send(err);
+    } else {
+      post.title = req.body.title;
+      post.content = req.body.content;
+      post.author = req.body.author;
+      post.save((err, post) => {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(post);
+        }
+      });
+    }
+  });
+});
+Delete: DELETE /posts/:id
+app.delete('/posts/:id', (req, res) => {
+  Post.findByIdAndDelete(req.params.id, (err, post) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(`Post ${req.params.id} deleted`);
+    }
+  });
+});
+Why do we need to learn advanced mongo queries? What if we can access documents from the database and apply a filter in the server itself?
+Firstly, accessing all documents from the database can be time-consuming and can cause a significant load on the database server, leading to slower response times and potential performance issues.
+retrieving all documents may not be necessary, as some documents may not match the filters applied and can be filtered out at the database level.
+applying filters on the server level can require significant computational resources, depending on the complexity of the filters and the size of the dataset. This can lead to high CPU usage, longer response times, and potential server crashes if the server does not have enough resources to handle the request.
+To mitigate these issues, it is generally recommended to apply filters at the database level whenever possible. This involves using the query language provided by the database to filter the results before they are retrieved, rather than retrieving all documents and filtering them on the server.
+
+Advance MongoDB queries
+Dataset : [LINK](https://pastebin.com/Yv8Su9Nd) (We will be running our query on)
+
+1. Accessing the values of an object
+Finding heroes whose health is 40
+db.heroes.find({health:40}).pretty()
+This will return all heroes whose health is 40.
+
+Find heroes who's fav color is red and age is 44.
+db.heroes.find({metadata:{favouriteColor:"red",age:44}}).pretty()
+This will return all heroes having fav color red and age 44. her it is spider-man only.
+
+—But here is the catch -:
+
+let’s run the same query and change the order.
+
+db.heroes.find({metadata:{age:44,favouriteColor:"red"}}).pretty()
+You will get no response because query order matters. The order should be exact the same when querying as in the database.
+
+—Here is the second catch -:
+
+db.heroes.find({metadata:{favouriteColor:"red"}}).pretty()
+Here also you wouldn’t get any response because we have to pass all keys available in the database when we are filtering this way.
+
+Then the question is how we can do that when I only want to look for fav color red
+
+Here is the way-
+
+Accessing nested object keys
+db.heroes.find({"metadata.favouriteColor":"red"}).pretty()
+This way you can access all the heroes having fav color red.
+
+Comparison Operators (For reference)
+Operator	Description
+$eq	Matches values that are equal to the given value.
+$gt	Matches if values are greater than the given value.
+$lt	Matches if values are less than the given value.
+$gte	Matches if values are greater or equal to the given value.
+$lte	Matches if values are less or equal to the given value.
+$in	Matches any of the values in an array.
+$ne	Matches values that are not equal to the given value.
+$nin	Matches none of the values specified in an array.
+Find heroes who's age is less than 50.
+db.heroes.find({"metadata.age" : {$lt : 50}}).pretty()
+This will return all heroes having less than 50.
+
+Find all heroes whose health is either of these 33,40,60
+db.heroes.find({"health": { $in: [33,60,40]}}).pretty()
+This will give you all documents whose health is anyone mentioned in the query array.
+
+2. Accessing value in an array.
+Find all heroes whose powers are robot and money.
+db.heroes.find({powers : ["robot","money"]}).pretty()
+You will get ironman as result.
+
+—but here is the catch -:
+
+let’s run the same query changing the order of powers in the array.
+
+db.heroes.find({powers : ["money","robot"]}).pretty()
+you wouldn’t get any response. The order of the query array should be the same as the array in the database.
+
+Find heroes whose power is magic
+db.heroes.find({powers : ["magic"]}).pretty()
+you will get Dr. Strange but the catch is magic appears Thor powers also but it is matching for the exact array with the same length, same elements, in the same order.
+
+(We have discussed below how to avoid it)
+
+Array Operators
+Operator	Description
+$all	Matches arrays that contain all the specified values in the query condition.
+$size	Matches the documents if the array size is equal to the specified size in a query.
+$elemMatch	Matches documents that match specified $elemMatch conditions within each array element.
+Find heroes whose powers are intelligence and money, irrespective of the order.
+db.heroes.find({powers : {$all : ["money","intelligence"]}}).pretty()
+This will avoid looking for orders. It will give you all documents containing all query array elements in the powers array of the database.
+
+Find documents where at least a single element in the “coin” array is less than 30 and greater than 5.
+db.heroes.find({ "coin": { $elemMatch: {$gt: 5, $lt: 30}}}).pretty()
+Find documents where either element in the “coin” array are 5,3,2,10.
+db.heroesfind({"coin": { $in: [33,60,40]}}).pretty()
+Logical operator
+Operator	Description
+$and	Joins two or more queries with a logical AND and returns the documents that match all the conditions.
+$or	Join two or more queries with a logical OR and return the documents that match either query.
+$nor	The opposite of the OR operator. The logical NOR operator will join two or more queries and return documents that do not match the given query conditions.
+$not	Returns the documents that do not match the given query expression.
+Projection
+
+MongoDB projection is a technique used to retrieve only a specific set of fields from the documents in a collection. This technique can help to reduce the network bandwidth, memory consumption, and processing time when querying a large collection.
+
+In the given dataset, suppose we want to retrieve only the name and powers fields from all documents in the collection, we can use projection to retrieve only those fields. The following is an example of how to use projection in MongoDB:
+
+db.heroes.find({}, { name: 1, powers: 1 })
+This query retrieves all documents in the collection, but it only returns the name and powers fields for each document. The first argument of the find method is an empty object, indicating that we want to retrieve all documents. The second argument is an object that specifies the fields we want to retrieve. The value of 1 indicates that we want to retrieve the field, while the value of 0 indicates that we want to exclude the field.
+
+We can also use projection to retrieve nested fields in a document. For example, if we want to retrieve the name and health fields of all villains in the collection, we can use the following query:
+
+db.heroes.find({}, { "villains.name": 1, "villains.health": 1 })
+This query retrieves all documents in the collection, but it only returns the name and health fields of all villains in each document.
+
+In summary, projection is a useful technique in MongoDB to retrieve only the specific fields we need from a collection, which can help to reduce the network bandwidth, memory consumption, and processing time.
+
+Here are some important pointers about projection in MongoDB:
+
+Projection is a technique used to retrieve only a specific set of fields from documents in a MongoDB collection.
+Using projection can reduce the amount of data transferred over the network, lower memory consumption, and improve query performance.
+Projection is specified as the second argument to the find() method. The projection object specifies the fields to be included or excluded in the query result.
+The projection object is a document that maps field names to 1 or 0, where 1 indicates inclusion and 0 indicates exclusion.
+Nested fields can be included or excluded in a projection by specifying the complete path to the field using dot notation.
+If a field is excluded from the projection, it is still present in the original document but is not included in the query result.
+If a field is included in the projection, it will be present in the query result even if it was not present in the original document. In this case, the field will have a null value.
+If a field is included in the projection and the field does not exist in the original document, it will also be present in the query result with a null value.
+Projection can be combined with other query operators to filter and sort the query result.
+In MongoDB, projection is commonly used with the find() method, but it can also be used with other methods like aggregate() and findOne().

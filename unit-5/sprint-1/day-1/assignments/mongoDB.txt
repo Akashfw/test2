@@ -1,0 +1,17 @@
+1) Find all the countries in region "Asia"
+ans - db.data.find({region:"Asia"}) 
+
+2)Find all the countries with currency: "EUR"
+ans-db.data.find({currency:"EUR"}) 
+
+3)Find all the countries whose timezone's gmtOffset is 3600.
+ans-db.data.find({"timezones.gmtOffset":3600});
+
+4) Find all the countries whose timezone's gmtOffset is 3600 AND timezone name is Central European Time (or CET);
+ans-db.data.find({timezones:{$elemMatch:{gmtOffset:3600,abbreviation:"CET"}}}) 
+
+5)Find All the countries with more than 1 time zone (hint: size of array);
+  ans - db.data.find({$where:"this.timezones.length > 1"}) 
+
+6) Find All the countries with "Korean" translation (KR).
+ans - db.data.find({"translations.kr":{$exists:true}})   
