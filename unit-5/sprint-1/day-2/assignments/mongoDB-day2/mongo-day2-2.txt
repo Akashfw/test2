@@ -1,0 +1,29 @@
+1) Write an aggregation pipeline to get the total number of orders for each customer..
+ans - db.pasebin.aggregate([ {$project :  {name:1, totalOrders: {$size : "$orders"} } } ] )
+
+2) Write an aggregation pipeline to get the total price of all orders for each customer.
+ans - db.pasebin.aggregate([ {$project :  {name:1, totalcostOfOrder: {$sum : "$orders.price"} } } ])
+
+3) Write an aggregation pipeline to get the average price of all orders for each customer.
+ans - db.pasebin.aggregate([ {$project :  {name:1, AvgCostOfOrder: {$avg : "$orders.price"} } } ] )
+
+4) Write an aggregation pipeline to get the highest price of all orders for each customer.
+ans - db.pasebin.aggregate([ {$project :  {name:1, max : {$max : "$orders.price"} } } ] )
+
+5) Write an aggregation pipeline to get the lowest price of all orders for each customer.
+ans - db.pasebin.aggregate([ {$project :  {name:1, min : {$min : "$orders.price"} } } ] )
+
+6) Write an aggregation pipeline to get the total number of orders and the total price of all orders for each customer. 
+ans - db.pasebin.aggregate([ {$project :  {name:1,_id:0, NumbersOfOrder : {$size : "$orders"}, TotalCost: {$sum: "$orders.price"} } } ] )
+
+7) Write an aggregation pipeline to get the total number of orders and the average price of all orders for each customer.
+ans - db.pasebin.aggregate([ {$project :  {name:1,_id:0, NumbersOfOrder : {$size : "$orders"}, AvgCost: {$avg: "$orders.price"} } } ] )
+
+8) Write an aggregation pipeline to get the highest price and the lowest price of all orders for each customer.
+ans - db.pasebin.aggregate([ {$project :  {name:1,_id:0, MaxPrice : {$max : "$orders.price"}, MinPrice: {$min: "$orders.price"} } } ] )
+
+9) Write an aggregation pipeline to get the total number of orders and the highest price of all orders for each customer.
+ans - db.pasebin.aggregate([ {$project :  {name:1,_id:0, NumbersOfOrder : {$size : "$orders"}, max: {$max: "$orders.price"} } } ] )
+
+10) Write an aggregation pipeline to get the total number of orders, the total price, and the average price of all orders for each customer.
+ans - db.pasebin.aggregate([ {$project :  {name:1,_id:0, NumbersOfOrder : {$size : "$orders"}, AvgCost: {$avg: "$orders.price"},TotalCost: {$sum:"$orders.price"} } } ] )

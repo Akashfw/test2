@@ -1,0 +1,8 @@
+1)find largest population city in every state.
+ans - db.media.aggregate([{$sort:{pop:-1}}, {$group: {_id:"$state",cityWithMaxPop:{$first:"$city"},MaxPop:{$first:"$pop"}}}])
+
+2) find average population per state by cities.
+ans - db.media.aggregate([ {$group: {_id:"$state",AvgPop: {$avg:"$pop"} }}])
+
+3) find the lowest population city
+ans - db.media.aggregate([{$sort:{pop:1}}, {$group: {_id:"$state",cityWithMaxPop:{$first:"$city"},Pop:{$first:"$pop"}}}]) 
