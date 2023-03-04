@@ -1,0 +1,4 @@
+1) db.data_1.aggregate([{$lookup:{from:"data_2",localField:"address",foreignField:"address",as:"details"}}])                                                                     
+       
+
+2) db.data_1.aggregate([{$lookup:{from:"data_2",localField:"address",foreignField:"address",as:"zipcode"}},{$lookup:{from:"data_3",localField:"zipcode.zipcode",foreignField:"zipcode",as:"state"}},{$lookup:{from:"data_4",localField:"state.state",foreignField:"state",as:"country"}}])
