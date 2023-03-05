@@ -1,0 +1,11 @@
+db.categories.aggregate( [
+  {   $graphLookup: {
+         from: "categories",
+         startWith: "$parent",
+         connectFromField: "parent",
+         connectToField: "_id",
+         as: "sub-category"
+      }
+   }, {$lookup: {from:"products",localField:"_id",foreignField:"category",as:"products"}},
+    {$project:{name:1,"sub-category":1,products:1,noofProduct:{$size:"$products"}}}
+] )
