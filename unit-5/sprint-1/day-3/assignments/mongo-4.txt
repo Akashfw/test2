@@ -1,0 +1,4 @@
+db.country.aggregate( [{$match:{pop:{$gt:5000}}},
+ {$group:{_id:"$state", TotalPop:{$sum:"$pop"}}}, 
+ {$sort:{TotalPop:-1}},
+  {$skip:2}, {$limit:2}] )
