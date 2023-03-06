@@ -4,6 +4,7 @@ const {Ordermodel}= require("../models/order_model");
 const {Compmodel}= require("../models/companies_model");
 
 
+
 compRouter.get("/",async (req,res)=>{
     try {
         const comp= await Compmodel.find();

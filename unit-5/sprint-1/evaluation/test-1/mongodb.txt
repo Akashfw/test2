@@ -1,0 +1,30 @@
+1)  Find the total number of sales data based on gender.
+ans - db.store.aggregate( [ {$group: {_id:"$customer.gender", total_sale:{$sum:1}}} ] )
+------------------------------------------------------------------------------------------------------------
+2) Find the top 3 stores based on the total number of sales being made
+ans - db.store.aggregate(  [ {$group:{_id:"$storeLocation", Total_sale:{$sum:1}}}, 
+      {$sort:{Total_sale:-1 }}, {$limit:3} ] )
+
+                     or
+
+ans - db.store.aggregate(  [ {$group:{_id:"$purchaseMethod", Total_sale:{$sum:1}}},
+      {$sort:{Total_sale:-1 }}, {$limit:3} ] )
+
+-----------------------------------------------------------------------------------------------------------------------------
+3) Find the stores based on total sales made as well as average customer
+   satisfaction rating per store in descending order of rating.
+
+ans - db.store.aggregate(  [ {$group:{_id:"$purchaseMethod", Total_sale:{$sum:1},
+      avg_rating:{$avg:"$customer.satisfaction"}}},
+     {$sort:{Total_sale:-1 }},{$sort:{avg_rating:-1}}])
+
+                or
+
+ans - db.store.aggregate(  [ {$group:{_id:"$storeLocation", Total_sale:{$sum:1},
+     avg_rating:{$avg:"$customer.satisfaction"}}}, {$sort:{Total_sale:-1 }},{$sort:{avg_rating:-1}}] )   
+
+
+--------------------------------------------------------------------------------------------------------------                  
+
+4)  Find total sales made in each store .
+ans - db.store.aggregate(  [ {$group:{_id:"$storeLocation", Total_sale:{$sum:1}}}] )
