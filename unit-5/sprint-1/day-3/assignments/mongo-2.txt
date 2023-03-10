@@ -1,1 +1,2 @@
-1) db.sales.aggregate([{$group:{_id:"$item",totQnt:{$sum:"$quantity"},avgPrice:{$avg:{$divide:["$total","$quantity"]}},avgTime:{$avg:{$dateDiff:{startDate:"$date",endDate:"$$NOW",unit:"day"}}}}},{$match:{avgTime:{$lte:30,$gte:1}}},{$sort:{qnt:-1}},{$limit:10}])
+1) db.sales.aggregate([{$group:{_id:"$item",totQnt:{$sum:"$quantity"},
+avgPrice:{$avg:{$divide:["$total","$quantity"]}},avgTime:{$avg:{$dateDiff:{startDate:"$date",endDate:"$$NOW",unit:"day"}}}}},{$match:{avgTime:{$lte:30,$gte:1}}},{$sort:{qnt:-1}},{$limit:10}])

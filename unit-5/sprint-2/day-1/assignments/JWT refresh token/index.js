@@ -7,6 +7,7 @@ const {authenticate}= require("./middleware/authenticate")
 const {connection}=require('./config/db');
 const {UserModel}= require('./models/user_model')
 app.use(express.json());
+require("dotenv").config()
 
 
 app.get("/",async (req,res)=>{
@@ -37,8 +38,8 @@ app.post("/login", async (req, res) => {
     const hashedpwd = user?.pass
     bcrypt.compare(pass, hashedpwd, function(err, result) {
         if(result){
-            const token = jwt.sign({userID : user._id}, "SECRET", {expiresIn : '1h'})
-            const refresh_token = jwt.sign({userID : user._id}, "REFRESH_SECRET", {expiresIn : '7d'})
+            const token = jwt.sign({userID : user._id}, process.env.Tkey, {expiresIn : '1h'})
+            const refresh_token = jwt.sign({userID : user._id}, process.env.Rkey, {expiresIn : '7d'})
             res.send({msg : "login successfull", token, refresh_token})
         }
         else{
@@ -60,7 +61,7 @@ app.get("/logout", (req, res) => {
     res.send("Logged out successfully")
 })
 
-app.listen(8080, async ()=>{
+app.listen(process.env.port, async ()=>{
     try {
         await connection
         console.log("connected to DB")
@@ -68,5 +69,5 @@ app.listen(8080, async ()=>{
         console.log(err)
         console.log("unable to connect to DB")
     }
-    console.log("running on port 8080")  
+    console.log("running on port "+process.env.port)  
 })
