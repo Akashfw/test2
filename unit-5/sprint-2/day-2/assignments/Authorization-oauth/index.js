@@ -36,7 +36,7 @@ app.get("/auth/github", async(req,res)=>{
         })
      }).then((res)=> res.json())
 
-      console.log(accessToken)
+      
 
       const user= await fetch("https://api.github.com/user",{
         headers:{
